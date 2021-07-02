@@ -1,0 +1,124 @@
+###GET ALL MENU
+
+GET http://localhost:3001/api/getAllMenu
+
+###GET ALL MENU-AVAILABLE
+
+GET http://localhost:3001/api//get-all-menu-available
+
+### ADD MENU
+POST http://localhost:3001/api/addMenu
+Content-Type: application/json
+
+{
+    "price":2500, 
+    "description":"Delicioso sandwich de jamos con queso", 
+    "title":"Combo 2", 
+    "source_img":"sadasdasdasdaad.firebase.com"
+}
+
+### DELETE MENU
+DELETE http://localhost:3001/api/deleteMenu/5
+
+###UPDATE AVAILABLE MENU
+PUT http://localhost:3001/api/updateAvailable/1
+Content-Type: application/json
+
+{
+    "available":1
+}
+
+###UPDATE  MENU SELECTED
+
+PUT http://localhost:3001/api/updateMenuSelected/7
+Content-Type: application/json
+
+{
+    "source_img":"https://firebasestorage.googleapis.com/v0/b/meriendas-app.appspot.com/o/snacks-images%2Fimg1.jpeg?alt=media&token=75c41cd5-0224-497f-bf82-bdcfdf4dba24",
+     "price" :1111,
+      "title": "Menu actualizado 2", 
+      "description" :"Ya no es tan delicioso"
+}
+
+
+
+
+#####REGISTER USER
+
+POST http://localhost:3001/api/register-users
+Content-Type: application/json
+
+{
+    "name" : "ROOT", 
+    "nit" :1234, 
+    "rol" : "usuario", 
+    "entity":"COFCA",
+    "password" : "1234"
+}
+
+
+###AUTH
+
+post http://localhost:3001/api/auth
+Content-Type: application/json
+
+{
+    "nit":1140866535,
+    "password": "11234"
+}
+
+###GET ROL
+POST http://localhost:3001/api/get-rol
+Content-Type: application/json
+
+{
+    "nit" : 1140866535
+}
+
+###INSERT ORDER
+POST http://localhost:3001/api/add-order
+Content-Type: application/json
+
+{
+    "sede": "CIRUGIA",
+    "menuId":"as32ds-2324ddsf-ewqe2323",
+    "price":2500,
+    "menuName":"COMBO 20",
+    "jornada" : 1,
+    "idEmployed": 55555555,
+    "entity":"FOCA",
+    "date":"2021-06-30",
+    "time":"11:21:00"
+    
+}
+
+
+###GET ORDERS
+
+POST http://localhost:3001/api/get-all-employed-orders
+Content-Type: application/json
+
+{
+    "initialDate":"2021-06-30",
+    "finalDate": "2021-06-30",
+    "nit":444444444,
+    "jornada":null,
+    "sede":"FOCA",
+    "state":null,
+    "menuName":null
+    
+}
+
+
+
+###GET ORDERS
+
+POST http://localhost:3001/api/get-orders/555555555
+Content-Type: application/json
+
+{
+    "initialDate":"2021-07-01",
+    "finalDate": "2021-07-01",
+
+    
+}
