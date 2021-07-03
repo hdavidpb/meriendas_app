@@ -26,4 +26,6 @@ router.post("/add-order", OrderCtrl.confirmOrder);
 router.post("/get-orders/:nit", OrderCtrl.getAllOrdersFromDate);
 router.post("/get-all-employed-orders", OrderCtrl.getAllEmployedOrders);
 
+router.put("/updateTo-delivered-state/:id", OrderCtrl.updateDeliveredOrder);
+
 module.exports = router;

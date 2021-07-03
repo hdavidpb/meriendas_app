@@ -101,11 +101,11 @@ Content-Type: application/json
 {
     "initialDate":"2021-06-30",
     "finalDate": "2021-06-30",
-    "nit":444444444,
-    "jornada":null,
-    "sede":"FOCA",
-    "state":null,
-    "menuName":null
+    "nit":"",
+    "jornada":"",
+    "sede":"",
+    "state":"",
+    "menuName":"combo 1"
     
 }
 
@@ -121,4 +121,13 @@ Content-Type: application/json
     "finalDate": "2021-07-01",
 
     
+}
+
+###UPDATE DELIVERED ORDER
+
+PUT http://localhost:3001/api/updateTo-delivered-state/1
+Content-Type: application/json
+
+{
+    "state": "pendiente"
 }

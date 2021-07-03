@@ -8,6 +8,7 @@ const confirmOrder = (req, res) => {
     menuName,
     jornada,
     idEmployed,
+    employedName,
     entity,
     date,
     time,
@@ -20,13 +21,14 @@ const confirmOrder = (req, res) => {
     menuName,
     jornada,
     idEmployed,
+    employedName,
     entity,
     date,
     time,
     deliveredBy,
   ];
   const SQL_CONFIRM_ORDER =
-    "INSERT INTO pedidos (sede, menu_id,precio,nombre_menu,jornada,nit_empleado,entidad,fecha,hora) VALUES (?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO pedidos (sede, menu_id,precio,nombre_menu,jornada,nit_empleado,nombre_empleado,entidad,fecha,hora) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
   db.query(SQL_CONFIRM_ORDER, [...values], (err, result) => {
     err ? console.log(err) : res.send(result);
@@ -75,8 +77,31 @@ const getAllEmployedOrders = (req, res) => {
   });
 };
 
+const updateDeliveredOrder = (req, res) => {
+  const { state, user_nit } = req.body;
+  const { id } = req.params;
+
+  let SQL_UPDATE_DELIVERED = "UPDATE pedidos";
+  if (state === "entregado")
+    SQL_UPDATE_DELIVERED +=
+      " SET estado = ? , entregado_por = ? , eliminado_por = null WHERE id = ?";
+
+  if (state === "eliminado")
+    SQL_UPDATE_DELIVERED +=
+      " SET estado = ? , eliminado_por = ? , entregado_por = null WHERE id = ?";
+
+  db.query(SQL_UPDATE_DELIVERED, [state, user_nit, id], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+};
+
 module.exports = {
   confirmOrder,
   getAllOrdersFromDate,
   getAllEmployedOrders,
+  updateDeliveredOrder,
 };
