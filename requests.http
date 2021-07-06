@@ -49,11 +49,12 @@ POST http://localhost:3001/api/register-users
 Content-Type: application/json
 
 {
-    "name" : "ROOT", 
-    "nit" :1234, 
+    "name" : "PRUEBA900", 
+    "nit" :1111, 
+    "password" : "1111",
     "rol" : "usuario", 
-    "entity":"COFCA",
-    "password" : "1234"
+    "entity":"IMES"
+    
 }
 
 
