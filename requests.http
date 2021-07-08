@@ -49,11 +49,11 @@ POST http://localhost:3001/api/register-users
 Content-Type: application/json
 
 {
-    "name" : "PRUEBA900", 
-    "nit" :1111, 
-    "password" : "1111",
+    "name" : "TOKEN", 
+    "nit" :22222, 
+    "password" : "22222",
     "rol" : "usuario", 
-    "entity":"IMES"
+    "entity":"FOCA"
     
 }
 
@@ -75,6 +75,19 @@ Content-Type: application/json
 {
     "nit" : 1140866535
 }
+
+
+
+###GET USERDATA
+POST http://localhost:3001/api/get-userData
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJUT0tFTiIsIm5pdCI6MjIyMjIsInJvbCI6InVzdWFyaW8iLCJlbnRpdHkiOiJGT0NBIiwicGFzc3dvcmQiOiIyMjIyMiJ9LCJpYXQiOjE2MjU1NzY2MjV9.Hd01K3ixfeKCpR1HVK_xYv91xwDtHxbHcXQb8_7q-ms"
+}
+
+
+
 
 ###INSERT ORDER
 POST http://localhost:3001/api/add-order
@@ -132,3 +145,16 @@ Content-Type: application/json
 {
     "state": "pendiente"
 }
+
+
+
+###UPDATE DELIVERED ORDER
+
+PUT http://localhost:3001/api/updateTo-delivered-anular/17
+Content-Type: application/json
+
+{
+    "state": "anulado"
+}
+
+

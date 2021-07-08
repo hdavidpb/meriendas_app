@@ -19,6 +19,7 @@ router.put("/updateMenuSelected/:uid", SnackCtrl.updateMenuSelected);
 router.post("/register-users", LoginCtrl.registerUser);
 router.post("/auth", LoginCtrl.authenticationUser);
 router.post("/get-rol", LoginCtrl.getRolUser);
+router.post("/get-userData", LoginCtrl.getUserData);
 
 //ROUTES ORDER'S CONTROL
 
@@ -27,5 +28,9 @@ router.post("/get-orders/:nit", OrderCtrl.getAllOrdersFromDate);
 router.post("/get-all-employed-orders", OrderCtrl.getAllEmployedOrders);
 
 router.put("/updateTo-delivered-state/:id", OrderCtrl.updateDeliveredOrder);
+router.put(
+  "/updateTo-delivered-anular/:id",
+  OrderCtrl.updateDeliveredOrderAnular
+);
 
 module.exports = router;

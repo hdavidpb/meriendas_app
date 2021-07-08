@@ -1,12 +1,21 @@
 const db = require("../database");
+const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");
 
 const registerUser = async (req, res) => {
   const { name, nit, rol, entity, password } = await req.body;
   // let passwordHaash = await bcryptjs.hash(password, 8);
-  const values = [name, nit, rol, entity, password];
+  const user = {
+    name: name,
+    nit: nit,
+    rol: rol,
+    entity: entity,
+    password: password,
+  };
+  const token = jwt.sign({ user }, "privateToken");
+  const values = [name, nit, rol, entity, password, token];
   const SQL_REGISTER =
-    "INSERT INTO usuarios (name,nit,rol,entidad,password) VALUES (?,?,?,?,?) ";
+    "INSERT INTO usuarios (name,nit,rol,entidad,password,token) VALUES (?,?,?,?,?,?) ";
   db.query(SQL_REGISTER, [...values], (err, result) => {
     err ? console.log(err) : res.send(result);
   });
@@ -49,4 +58,18 @@ const getRolUser = (req, res) => {
   });
 };
 
-module.exports = { registerUser, authenticationUser, getRolUser };
+const getUserData = (req, res) => {
+  const { token } = req.body;
+
+  SQL_GET_USER = "SELECT * FROM usuarios WHERE token = ?";
+
+  db.query(SQL_GET_USER, token, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+};
+
+module.exports = { registerUser, authenticationUser, getRolUser, getUserData };

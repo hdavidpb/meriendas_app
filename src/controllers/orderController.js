@@ -99,9 +99,25 @@ const updateDeliveredOrder = (req, res) => {
   });
 };
 
+const updateDeliveredOrderAnular = (req, res) => {
+  const { state } = req.body;
+  const { id } = req.params;
+
+  let SQL_UPDATE_DELIVERED = "UPDATE pedidos SET estado = ? WHERE id = ?";
+
+  db.query(SQL_UPDATE_DELIVERED, [state, id], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+};
+
 module.exports = {
   confirmOrder,
   getAllOrdersFromDate,
   getAllEmployedOrders,
   updateDeliveredOrder,
+  updateDeliveredOrderAnular,
 };
